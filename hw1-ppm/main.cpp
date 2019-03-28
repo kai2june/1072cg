@@ -88,13 +88,19 @@ int main(){
 	vec3 vertical(0.0, 2.0, 0.0);
 	vec3 origin(0.0, 0.0, 0.0);
 	
-	hitable* list[4];
-	list[0]=new sphere(vec3(0,0,-1),0.5, new lambertian(vec3(0.8,0.3,0.3)));
-	list[1]=new sphere(vec3(0,-100.5,-1),100,new lambertian(vec3(0.8,0.8,0.0)));
-	list[2]=new sphere(vec3(1,0,-1),0.5, new metal(vec3(0.8,0.6,0.2), 0.7));
-	list[3]=new sphere(vec3(-1,0,-1),0.5, new dielectric(1.5) );
-
-	hitable *world = new hitable_list(list, 4);
+	hitable* list[10];
+	list[0]=new sphere(vec3(0,0,-1),0.5, new metal(vec3(0.8, 0.6, 0.2), 0.2));
+	list[1]=new sphere(vec3(0,-100.5,-1),100,new lambertian(vec3(0.6,0.6,0.6)));
+	list[2]=new sphere(vec3(1,0,-1),0.4, new dielectric(1.5));
+	list[3]=new sphere(vec3(-1,0,-1),0.5, new lambertian(vec3(0.6,0.3,0.3) ) );
+	list[4]=new sphere(vec3(-1.0,-0.4,-0.6),0.1,new dielectric(3.0));
+	list[5]=new sphere(vec3(-0.7,-0.4,-0.6),0.1,new lambertian(vec3(0.8,0.3,0.3)));
+	list[6]=new sphere(vec3(-0.3,-0.4,-0.6),0.1,new lambertian(vec3(0.8,0.3,0.3)));
+	list[7]=new sphere(vec3(0.3,-0.4,-0.6),0.1,new dielectric(6.0));
+	list[8]=new sphere(vec3(0.7,-0.4,-0.6),0.1,new lambertian(vec3(0.8,0.3,0.3)));
+	list[9]=new sphere(vec3(1.0,-0.4,-0.6),0.1,new metal(vec3(0.8,0.3,0.3), 0.0));
+	
+	hitable *world = new hitable_list(list, 10);
 	camera cam;
 
 	for(int j = ny-1; j>=0; j--){
